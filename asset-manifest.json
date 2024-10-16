@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/culinary-hub/static/css/main.336586ad.css",
-    "main.js": "/culinary-hub/static/js/main.2b4d906d.js",
+    "main.js": "/culinary-hub/static/js/main.f1294cdd.js",
     "index.html": "/culinary-hub/index.html",
     "main.336586ad.css.map": "/culinary-hub/static/css/main.336586ad.css.map",
-    "main.2b4d906d.js.map": "/culinary-hub/static/js/main.2b4d906d.js.map"
+    "main.f1294cdd.js.map": "/culinary-hub/static/js/main.f1294cdd.js.map"
   },
   "entrypoints": [
     "static/css/main.336586ad.css",
-    "static/js/main.2b4d906d.js"
+    "static/js/main.f1294cdd.js"
   ]
 }
