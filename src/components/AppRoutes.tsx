@@ -1,12 +1,34 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import RecipesPage from "../pages/RecipesPage";
+import { CircularProgress, Box } from "@mui/material";
+import SharedLayout from "./SharedLayout";
+
+const RecipesPage = lazy(() => import("../pages/RecipesPage"));
+// const IngredientsPage = lazy(() => import("../pages/IngredientsPage"));
+const RecipeDetailsPage = lazy(() => import("../pages/RecipeDetailsPage"));
 
 const AppRoutes: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<RecipesPage />} />
-    </Routes>
+    <Suspense
+      fallback={
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="100vh"
+        >
+          <CircularProgress />
+        </Box>
+      }
+    >
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<RecipesPage />} />
+          {/* <Route path="ingredients" element={<IngredientsPage />} /> */}
+          <Route path="recipes/:id" element={<RecipeDetailsPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 

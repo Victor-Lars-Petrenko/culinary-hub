@@ -1,12 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchRecipesThunk } from "./operations";
-import { pendingRecipes, rejectedRecipes } from "../../assets/functions/redux";
-import { IRecipe, IRecipesState } from "../store.types";
+import { fetchRecipesThunk, fetchRecipeByIdThunk } from "./operations";
+import {
+  pendingRecipes,
+  rejectedRecipeDetails,
+  rejectedRecipes,
+} from "../../assets/functions/redux";
+import { IRecipe, IRecipesState, IRecipeDetails } from "../store.types";
 
 export const initialState: IRecipesState = {
   recipes: [],
   isLoading: false,
   error: null,
+  recipeDetails: null,
 };
 
 const recipesSlice = createSlice({
@@ -23,7 +28,17 @@ const recipesSlice = createSlice({
           state.recipes = action.payload;
         }
       )
-      .addCase(fetchRecipesThunk.rejected, rejectedRecipes);
+      .addCase(fetchRecipesThunk.rejected, rejectedRecipes)
+
+      .addCase(fetchRecipeByIdThunk.pending, pendingRecipes)
+      .addCase(
+        fetchRecipeByIdThunk.fulfilled,
+        (state, action: PayloadAction<IRecipeDetails>) => {
+          state.isLoading = false;
+          state.recipeDetails = action.payload;
+        }
+      )
+      .addCase(fetchRecipeByIdThunk.rejected, rejectedRecipeDetails);
   },
 });
 

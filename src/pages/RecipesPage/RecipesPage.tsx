@@ -30,6 +30,7 @@ import {
 import { debounce } from "lodash";
 import useAppDispatch from "../../assets/hooks/useAppDispatch";
 import { ICategory } from "../../redux/store.types";
+import { Link } from "react-router-dom";
 
 const RecipesPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -122,20 +123,25 @@ const RecipesPage: React.FC = () => {
       >
         {currentRecipes.map(recipe => (
           <Card key={recipe.idMeal}>
-            <CardMedia
-              component="img"
-              alt={recipe.strMeal}
-              height="140"
-              image={recipe.strMealThumb}
-            />
-            <CardContent>
-              <Typography variant="h6" component="div">
-                {recipe.strMeal}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Category: {recipe.strCategory} | Area: {recipe.strArea}
-              </Typography>
-            </CardContent>
+            <Link
+              to={`/recipes/${recipe.idMeal}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <CardMedia
+                component="img"
+                alt={recipe.strMeal}
+                height="140"
+                image={recipe.strMealThumb}
+              />
+              <CardContent>
+                <Typography variant="h6" component="div">
+                  {recipe.strMeal}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Category: {recipe.strCategory} | Area: {recipe.strArea}
+                </Typography>
+              </CardContent>
+            </Link>
           </Card>
         ))}
       </Box>
