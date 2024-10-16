@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchRecipesThunk } from "./operations";
-import { pending, rejected } from "../../assets/functions/redux";
+import { pendingRecipes, rejectedRecipes } from "../../assets/functions/redux";
 import { IRecipe, IRecipesState } from "../store.types";
 
 export const initialState: IRecipesState = {
@@ -15,7 +15,7 @@ const recipesSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchRecipesThunk.pending, pending)
+      .addCase(fetchRecipesThunk.pending, pendingRecipes)
       .addCase(
         fetchRecipesThunk.fulfilled,
         (state, action: PayloadAction<IRecipe[]>) => {
@@ -23,7 +23,7 @@ const recipesSlice = createSlice({
           state.recipes = action.payload;
         }
       )
-      .addCase(fetchRecipesThunk.rejected, rejected);
+      .addCase(fetchRecipesThunk.rejected, rejectedRecipes);
   },
 });
 
