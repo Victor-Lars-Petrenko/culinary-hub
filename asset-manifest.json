@@ -1,19 +1,21 @@
 {
   "files": {
     "main.css": "/culinary-hub/static/css/main.336586ad.css",
-    "main.js": "/culinary-hub/static/js/main.916ab988.js",
-    "static/js/446.c8e860a3.chunk.js": "/culinary-hub/static/js/446.c8e860a3.chunk.js",
+    "main.js": "/culinary-hub/static/js/main.560d50e9.js",
+    "static/js/732.49670660.chunk.js": "/culinary-hub/static/js/732.49670660.chunk.js",
+    "static/js/964.1b0d3d96.chunk.js": "/culinary-hub/static/js/964.1b0d3d96.chunk.js",
     "static/js/308.f2e89990.chunk.js": "/culinary-hub/static/js/308.f2e89990.chunk.js",
     "static/js/253.d9bef872.chunk.js": "/culinary-hub/static/js/253.d9bef872.chunk.js",
     "index.html": "/culinary-hub/index.html",
     "main.336586ad.css.map": "/culinary-hub/static/css/main.336586ad.css.map",
-    "main.916ab988.js.map": "/culinary-hub/static/js/main.916ab988.js.map",
-    "446.c8e860a3.chunk.js.map": "/culinary-hub/static/js/446.c8e860a3.chunk.js.map",
+    "main.560d50e9.js.map": "/culinary-hub/static/js/main.560d50e9.js.map",
+    "732.49670660.chunk.js.map": "/culinary-hub/static/js/732.49670660.chunk.js.map",
+    "964.1b0d3d96.chunk.js.map": "/culinary-hub/static/js/964.1b0d3d96.chunk.js.map",
     "308.f2e89990.chunk.js.map": "/culinary-hub/static/js/308.f2e89990.chunk.js.map",
     "253.d9bef872.chunk.js.map": "/culinary-hub/static/js/253.d9bef872.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.336586ad.css",
-    "static/js/main.916ab988.js"
+    "static/js/main.560d50e9.js"
   ]
 }

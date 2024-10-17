@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkculinary_hub=self.webpackChunkculinary_hub||[]).push([[964],{1583:(u,s,a)=>{a.r(s),a.d(s,{default:()=>h});var c=a(5218),e=(a(5043),a(579));const h=()=>(0,e.jsx)(c.A,{})}}]);
+//# sourceMappingURL=964.1b0d3d96.chunk.js.map
