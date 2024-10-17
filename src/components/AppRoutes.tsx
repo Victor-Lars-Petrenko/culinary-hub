@@ -1,10 +1,10 @@
 import React, { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { CircularProgress, Box } from "@mui/material";
 import SharedLayout from "./SharedLayout";
 
 const RecipesPage = lazy(() => import("../pages/RecipesPage"));
-// const IngredientsPage = lazy(() => import("../pages/IngredientsPage"));
+const IngredientsPage = lazy(() => import("../pages/IngredientsPage"));
 const RecipeDetailsPage = lazy(() => import("../pages/RecipeDetailsPage"));
 
 const AppRoutes: React.FC = () => {
@@ -24,8 +24,9 @@ const AppRoutes: React.FC = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<RecipesPage />} />
-          {/* <Route path="ingredients" element={<IngredientsPage />} /> */}
+          <Route path="ingredients" element={<IngredientsPage />} />
           <Route path="recipes/:id" element={<RecipeDetailsPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </Suspense>

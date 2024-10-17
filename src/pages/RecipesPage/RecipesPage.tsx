@@ -6,14 +6,12 @@ import {
   selectError,
 } from "../../redux/recipes/selectors";
 import {
-  selectCategories,
   selectIsLoadingCategories,
   selectCategoriesError,
 } from "../../redux/categories/selectors";
 import { fetchRecipesThunk } from "../../redux/recipes/operations";
 import { fetchCategoriesThunk } from "../../redux/categories/operations";
 import {
-  TextField,
   Box,
   Card,
   CardContent,
@@ -21,27 +19,20 @@ import {
   Typography,
   CircularProgress,
   Pagination,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  SelectChangeEvent,
 } from "@mui/material";
-import { debounce } from "lodash";
 import useAppDispatch from "../../assets/hooks/useAppDispatch";
-import { ICategory } from "../../redux/store.types";
 import { Link } from "react-router-dom";
+import Filter from "../../components/Filter";
 
 const RecipesPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const recipes = useSelector(selectRecipes);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const categories = useSelector(selectCategories);
   const isLoadingCategories = useSelector(selectIsLoadingCategories);
   const categoriesError = useSelector(selectCategoriesError);
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -63,17 +54,6 @@ const RecipesPage: React.FC = () => {
     );
   }, [recipes, selectedCategory, searchQuery]);
 
-  const handleSearchChange = debounce(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchQuery(event.target.value);
-    },
-    300
-  );
-
-  const handleCategoryChange = (event: SelectChangeEvent<string>) => {
-    setSelectedCategory(event.target.value);
-  };
-
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -93,28 +73,11 @@ const RecipesPage: React.FC = () => {
 
   return (
     <Box sx={{ p: 2 }}>
-      <TextField
-        label="Search recipes"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        onChange={handleSearchChange}
+      <Filter
+        selectedCategory={selectedCategory}
+        setSearchQuery={setSearchQuery}
+        setSelectedCategory={setSelectedCategory}
       />
-      <FormControl variant="outlined" fullWidth margin="normal">
-        <InputLabel>Category</InputLabel>
-        <Select
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-          label="Category"
-        >
-          <MenuItem value="">All</MenuItem>
-          {categories.map((category: ICategory) => (
-            <MenuItem key={category.strCategory} value={category.strCategory}>
-              {category.strCategory}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
       <Box
         display="grid"
         gridTemplateColumns="repeat(auto-fill, minmax(280px, 1fr))"
